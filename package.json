@@ -31,10 +31,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ilyesse-soc/tp-ecommerce-tests.git"
+    "url": "git+https://github.com/Ilyesse-soc/tp-ecommerce-test.git"
   },
   "bugs": {
-    "url": "https://github.com/Ilyesse-soc/tp-ecommerce-tests/issues"
+    "url": "https://github.com/Ilyesse-soc/tp-ecommerce-test/issues"
   },
-  "homepage": "https://github.com/Ilyesse-soc/tp-ecommerce-tests#readme"
+  "homepage": "https://github.com/Ilyesse-soc/tp-ecommerce-test#readme"
 }
