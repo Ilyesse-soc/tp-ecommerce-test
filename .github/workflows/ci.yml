@@ -1,0 +1,74 @@
+name: Integration Continue (CI)
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Tests et Validation
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+    
+    steps:
+    - name: Recuperation du code source
+      uses: actions/checkout@v4
+    
+    - name: Configuration Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Installation des dependances
+      run: npm ci
+    
+    - name: Verification de la syntaxe
+      run: npm run lint
+    
+    - name: Execution des tests unitaires
+      run: npm run test
+    
+    - name: Execution des tests de couverture
+      run: npm run test:coverage
+    
+    - name: Verification de la securite
+      run: npm audit
+    
+    - name: Upload des resultats de couverture
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage/lcov.info
+        flags: unittests
+        name: codecov-umbrella
+
+  quality:
+    name: Analyse de la qualite du code
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - name: Recuperation du code source
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Configuration Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Installation des dependances
+      run: npm ci
+    
+    - name: Analyse SonarCloud
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
