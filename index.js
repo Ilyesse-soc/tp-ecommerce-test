@@ -11,7 +11,7 @@ console.log('-'.repeat(45));
 const panierActuel = new Basket();
 const produit1 = { name: 'Carte mère', price: 100 };
 const produit2 = { name: 'Carte graphique', price: 300 };
-const utilisateur = { name: 'Perceval', balance: 500 };
+const utilisateur = { name: 'Ilyesse', balance: 500 };
 
 console.log('Panier initial:', panierActuel);
 console.log('Utilisateur initial:', utilisateur);

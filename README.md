@@ -109,7 +109,7 @@ console.log(panier); // { items: [...], totalPrice: 100 }
 ### Processus de paiement
 
 ```javascript
-const utilisateur = { name: 'Perceval', balance: 500 };
+const utilisateur = { name: 'Ilyesse', balance: 500 };
 const panier = new Basket();
 
 // Ajout de produits au panier...

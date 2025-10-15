@@ -33,7 +33,7 @@ function testAddRemove() {
 }
 
 function testTransactionAllowed() {
-    const user = { name: 'Perceval', balance: 500 };
+    const user = { name: 'Ilyesse', balance: 500 };
     
     const transactionAllowed400 = transactionAllowed(user, 400);
     const transactionAllowed600 = transactionAllowed(user, 600);
@@ -42,7 +42,7 @@ function testTransactionAllowed() {
 }
 
 function testPayBasket() {
-    const user = { name: 'Perceval', balance: 500 };
+    const user = { name: 'Ilyesse', balance: 500 };
     const basket = new Basket();
     const item = { name: 'Carte graphique', price: 300 };
     
